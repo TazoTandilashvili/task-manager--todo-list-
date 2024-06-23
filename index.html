@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Task Manager</title>
+  </head>
+  <body>
+    <section id="add-task">
+      <h1 class="header">Add New Task</h1>
+      <input
+        type="text"
+        placeholder="Task Title"
+        id="task-title"
+        class="input-style"
+      />
+      <textarea
+        placeholder="Task Description"
+        id="task-description"
+        class="input-style"
+      ></textarea>
+      <div class="select-value-opt">
+        <div class="value-dropdwn">
+          <p class="select-value-txt">Choose Value</p>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+        <div class="value-options open">
+          <div>Pending</div>
+          <div>Completed</div>
+        </div>
+      </div>
+      <button id="add-task-button" onclick="addTask()">Add Task</button>
+    </section>
+    <section id="search-section">
+      <h1 class="header">Search</h1>
+      <input
+        type="search"
+        placeholder="Search Tasks"
+        id="search-input"
+        class="input-style"
+      />
+    </section>
+    <section id="task-list">
+      <!-- <div class="task">
+        <h1 class="task-title">Finish project proposal</h1>
+        <p class="task-desctiption">
+          Write up the project proposal and send it to the client
+        </p>
+        <div class="task-customize">
+          <p class="task-status completed">completed</p>
+          <button class="status-change-btn">
+            <ion-icon id="status-icons" name="checkmark"></ion-icon>
+          </button>
+          <button class="status-edit-btn">
+            <ion-icon id="status-icons" name="create-outline"></ion-icon>
+          </button>
+          <button class="status-delete-btn">
+            <ion-icon id="status-icons" name="trash-outline"></ion-icon>
+          </button>
+        </div>
+      </div> -->
+    </section>
+    <section id="editTask">
+      <p class="task-desctiption">Title</p>
+      <input
+        type="text"
+        placeholder="Task Title"
+        id="edited-title"
+        class="input-style"
+      />
+      <p class="task-desctiption">Description</p>
+      <textarea
+        placeholder="Task Description"
+        id="edited-description"
+        class="input-style"
+      ></textarea>
+      <button id="edit-task">Save</button>
+    </section>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+      defer
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+      defer
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
