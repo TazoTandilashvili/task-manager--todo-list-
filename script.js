@@ -102,6 +102,7 @@ const createTask = function (newTask) {
         if (task.id === taskEdit) {
           taskTitle.textContent = editedTitle;
           taskDescriptionInput.textContent = editedDescription;
+          console.log(tasks);
           return { title: editedTitle, description: editedDescription, ...task, };
         }
 
