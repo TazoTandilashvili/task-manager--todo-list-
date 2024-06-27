@@ -35,7 +35,7 @@ body {
   font-size: 16px;
 }
 #task-description {
-  height: 200px; /* Set a specific height or leave it flexible */
+  height: 100px; /* Set a specific height or leave it flexible */
   font-family: "Epilogue", sans-serif;
   resize: vertical; /* Allow vertical resizing */
 }

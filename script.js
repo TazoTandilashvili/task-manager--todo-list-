@@ -8,6 +8,8 @@ const editTask = document.getElementById("editTask");
 const editedTitle = document.getElementById("edited-title");
 const editedDescription = document.getElementById("edited-description");
 
+const searchInput = document.getElementById("search-input");
+
 selectValue.addEventListener("click", function () {
   valueOption.classList.toggle("open");
 });
@@ -123,7 +125,20 @@ const attachDeleteTaskListener = function (container, newTask) {
     tasks = tasks.map((task) => (task.id === newTask.id ? newTask : task));
   });
 };
+searchInput.addEventListener("input", function () {
+  const searchTerm = searchInput.value.toLowerCase();
+  const taskList = document.getElementById("task-list");
+  const filteredTasks = tasks.filter(
+    (task) =>
+      task.title.toLowerCase().includes(searchTerm) ||
+      task.description.toLowerCase().includes(searchTerm)
+  );
+  taskList.innerHTML = "";
+  filteredTasks.forEach((task) => {
+    createTask(task);
+  });
+});
 
-const addTask = function (e) {
+const addTask = function () {
   pushTask();
 };
