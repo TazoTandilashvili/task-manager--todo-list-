@@ -23,9 +23,11 @@ selectOptions.forEach((selectOption) => {
     valueOption.classList.add("open");
   });
 });
+// !get data from new task
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 // !get data from  new task
-let tasks = [];
+// let tasks = [];
 
 const taskTitleInput = document.getElementById("task-title");
 const taskDescriptionInput = document.getElementById("task-description");
@@ -41,9 +43,9 @@ const pushTask = function () {
         ? statusText
         : "pending",
   };
-  createTask(newTask);
   tasks.push(newTask);
-  console.log("addtask", tasks);
+  createTask(newTask);
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 };
 
 // !create new task
@@ -82,7 +84,8 @@ const attachDeleteTaskListener = function (container, newTask) {
   deleteTask.addEventListener("click", function () {
     const taskId = newTask.id;
     tasks = tasks.filter((task) => task.id !== taskId);
-    console.log("Task deleted:", taskId, "Tasks:", tasks);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
     container.remove();
   });
 
@@ -98,10 +101,9 @@ const attachDeleteTaskListener = function (container, newTask) {
 
       changeTitleBtn.textContent = newTask.title;
       changedDescriptionBtn.textContent = newTask.description;
+      localStorage.setItem("tasks", JSON.stringify(tasks));
 
       editTask.style.display = "none";
-      console.log("changed", tasks);
-      console.log("changed", newTask.id);
     });
   });
 
@@ -123,6 +125,7 @@ const attachDeleteTaskListener = function (container, newTask) {
 
     // Update the tasks array to reflect the new status
     tasks = tasks.map((task) => (task.id === newTask.id ? newTask : task));
+    localStorage.setItem("tasks", JSON.stringify(tasks));
   });
 };
 searchInput.addEventListener("input", function () {
@@ -138,7 +141,9 @@ searchInput.addEventListener("input", function () {
     createTask(task);
   });
 });
-
+window.addEventListener("load", function () {
+  tasks.forEach((task) => createTask(task));
+});
 const addTask = function () {
   pushTask();
 };
